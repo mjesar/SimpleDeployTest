@@ -10,4 +10,4 @@ def post_data():
 
 
 
-    return jsonify({'': ""})
+    return jsonify({'': data})
