@@ -13,6 +13,11 @@ def post_data():
             # request json for data force true for error in json farmate is wrong
             data = request.get_json(force=True)
 
+            #save data to database from json post request
+            people_db = People(first_name = data['first_name'],last_name = data['last_name'])
+
+            db.session.add(people_db)
+            db.session.commit()
 
             #taking first_name and last_name from json post request
             first_name = data['first_name']
