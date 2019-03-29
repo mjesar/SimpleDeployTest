@@ -1,9 +1,9 @@
 from flask import Blueprint,jsonify,request
-import csv
 import json
 import pandas as pd
 
-
+from databaseModel import db
+from databaseModel import People
 
 post_api = Blueprint('post_api', __name__)
 
