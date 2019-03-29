@@ -1,5 +1,6 @@
 from flask import Blueprint,jsonify,request
 import csv
+import json
 import pandas as pd
 
 
@@ -18,9 +19,9 @@ def post_data():
     last_name = data['last_name']
 
     # read and get length
-    count_id = pd.read_csv("people.csv")
-    len_index=len(count_id['ID'])
-    print(len_index+1)
+    dfObj = pd.read_csv("people.csv")
+    len_index=len(dfObj['ID'])
+    # print(len_index+1)
 
     dict = {}
 
@@ -35,4 +36,12 @@ def post_data():
         df.to_csv(f, mode='a', index=False, header=f.tell() == 0)
 
 
-    return jsonify({'InputedData': data})
+        #from df dataframe find duplicated values from only column first_name
+        duplicateRowsDF = dfObj[dfObj.duplicated(['first_name'])]
+        # print  duplicated values from only column first_name
+
+        # convert dataframe to json object and returned it to api end point
+        jsonfiles = json.loads(duplicateRowsDF["first_name"].to_json(orient='records'))
+
+        print(jsonfiles)
+    return jsonify( {"Duplicate Name": jsonfiles})

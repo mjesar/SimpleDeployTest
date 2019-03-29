@@ -48,3 +48,10 @@ Autoincrement ID first check the length of index then increase it by one
     dict.update({"ID": [len_index+1], "First name": [first_name], "Last Name": [last_name]})
 
 ```
+
+
+Convert Pandas dataframe to json object 
+```python
+    
+        jsonfiles = json.loads(duplicateRowsDF["first_name"].to_json(orient='records'))
+```
