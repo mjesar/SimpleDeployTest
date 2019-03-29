@@ -44,11 +44,11 @@ def post_data():
                 jsonfiles = json.loads(duplicateRowsDF["first_name"].to_json(orient='records'))
 
                 print(jsonfiles)
-            return jsonify( {"Duplicate Names": jsonfiles})
+            return jsonify( {"Duplicated Names": jsonfiles})
 
     else:
             dfObj = pd.read_csv("people.csv")
             duplicateRowsDF = dfObj[dfObj.duplicated(['first_name'])]
             jsonfiles = json.loads(duplicateRowsDF["first_name"].to_json(orient='records'))
-    return jsonify({"Duplicate Names" :jsonfiles})
+    return jsonify({"Duplicated Names" :jsonfiles})
 

@@ -5,6 +5,9 @@ using Python Flask Pandas
 1:http://127.0.0.1:5000/data/api/v1.0/input
  route created to post data that save to csv file
 
+get Duplicated Names data using getmethod 
+:http://127.0.0.1:5000/data/api/v1.0/input
+
 To check this route in postman use this json pattern 
 ````json
 {
