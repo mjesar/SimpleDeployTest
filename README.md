@@ -35,3 +35,16 @@ Writing to cvs with the help of Pandas dataframe
     with open("people.csv", 'a') as f:
         df.to_csv(f, mode='a', index=False, header=f.tell() == 0)
 ```
+
+
+Autoincrement ID first check the length of index then increase it by one
+```python
+    # read and get length
+    count_id = pd.read_csv("people.csv")
+    len_index=len(count_id['ID'])
+    
+    #append data to dictnary
+    #len_index+1 incrementing id
+    dict.update({"ID": [len_index+1], "First name": [first_name], "Last Name": [last_name]})
+
+```
