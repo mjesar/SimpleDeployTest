@@ -12,17 +12,12 @@ app = Flask(__name__)
 
 # configure SQLALCHEMY
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# database name people and aliali password postgress is user name
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:aliali@localhost/people'
 
 # initialized it with db object
 
 db.init_app(app)
-
-with app.app_context():
-    # Imports
-
-    # Initialize Global db
-    db.create_all()
 
 
 

@@ -62,3 +62,16 @@ Convert Pandas dataframe to json object
 ```
 
 #Task-2
+Store the result in the database including first name
+
+get data from json request make an object and store that object in database
+db.create() is bein used only once to create database 
+```python
+            #save data to database from json post request
+            people_db = People(first_name = data['first_name'],last_name = data['last_name'])
+            #db.create_all()
+            db.session.add(people_db)
+            db.session.commit()
+```
+
+
