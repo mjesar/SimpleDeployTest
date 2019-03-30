@@ -4,12 +4,14 @@ import pandas as pd
 
 from databaseModel import db
 from databaseModel import People
+from databaseModel import  SameNames
 
 post_api = Blueprint('post_api', __name__)
 
 @post_api.route('/data/api/v1.0/input',methods=['POST','GET',])
 def post_data():
     if request.method == 'POST':
+
             # request json for data force true for error in json farmate is wrong
             data = request.get_json(force=True)
 
@@ -47,6 +49,10 @@ def post_data():
 
                 # convert dataframe to json object and returned it to api end point
                 jsonfiles = json.loads(duplicateRowsDF["first_name"].to_json(orient='records'))
+
+                #database work
+
+                SameNames(same_name=jsonfiles)
 
                 print(jsonfiles)
             return jsonify( {"Duplicated Names": jsonfiles})
