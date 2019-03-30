@@ -75,3 +75,18 @@ db.create() is bein used only once to create database
 ```
 
 
+SQL Query 
+
+```
+-- Table: public.people
+
+-- DROP TABLE public.people;
+
+CREATE TABLE public.people
+(
+  id integer NOT NULL DEFAULT nextval('people_id_seq'::regclass),
+  first_name character varying(20),
+  last_name character varying(20),
+  CONSTRAINT people_pkey PRIMARY KEY (id)
+)
+```
