@@ -15,7 +15,7 @@ def post_data():
 
             #save data to database from json post request
             people_db = People(first_name = data['first_name'],last_name = data['last_name'])
-
+            db.create_all()
             db.session.add(people_db)
             db.session.commit()
 
